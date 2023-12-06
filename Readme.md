@@ -17,16 +17,23 @@ into the database
   
 
 **Files and Folders**
-* __main.py__ 
-  - main file that runs data pipeline 
+* __process.py__ 
+  - file that processed raw data
   - cleans the data, calls the function to remove outliers
   - saves final processed data into the respective outgoing directories
+
+* __load.py__
+  * execution of this file will load the processed and summarised data into the database
+  * the data will be appended on a table if it exists (will create new table if it doesn't)
 
 * __DataFiles__
   - stores the raw files for ingestion
 
 * __Processed__
   * Contains the processed files after cleanup and outlier removal
+
+* __Summarised__
+  * Contains summarised _power_output_ data files after raw data has been processed
 
 * __Modules__
   * contains the _utils.py_ that contains the function for outlier detection and removal.

@@ -6,7 +6,6 @@ from datetime import datetime
 from Modules import utils
 
 filepaths = glob.glob("DataFiles/*.csv")
-
 # Import Files from the DataFiles Folder for processing
 
 for filepath in filepaths:
@@ -34,7 +33,7 @@ for filepath in filepaths:
 
 	# Save cleaned files to Processed directory
 	print("saving cleaned data...")
-	filtered_df.to_csv(f"Processed/processed_data_{fileNumber}_{currentDateTime}",
+	filtered_df.to_csv(f"Processed/processed_data_{fileNumber}_{currentDateTime}.csv",
 					   sep=',', encoding='utf-8', header=True, index=None)
 	print("saving complete")
 
@@ -45,11 +44,10 @@ for filepath in filepaths:
 	grouper = pd.PeriodIndex(filtered_df['timestamp'], freq='D')
 	summary_df = filtered_df.groupby([grouper, 'turbine_id']).agg(power_output_mean=('power_output', 'mean'),
 																power_ouput_max=('power_output', 'max'),
-						                                         power_output_min=('power_output', 'min')).reset_index()
+																power_output_min=('power_output', 'min')).reset_index()
 
-	# write processed dataframe into csv file
+	# write summarised dataframe into csv file
 	print("saving summarised data...")
-	summary_df.to_csv(f"Summarised/power_summary_{fileNumber}_{currentDateTime}",
+	summary_df.to_csv(f"Summarised/power_summary_{fileNumber}_{currentDateTime}.csv",
 					sep=',', encoding='utf-8', header=True, index=None)
 	print("summary saving complete")
-

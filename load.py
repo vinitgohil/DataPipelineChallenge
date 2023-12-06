@@ -27,7 +27,7 @@ summarisedFiles = glob.glob("Summarised/*.csv")
 # load summarised data into database
 for summarisedFile in summarisedFiles:
 
-	# load one of the processed data files
+	# load summarised data files
 	df = pd.read_csv(summarisedFile, index_col=None)
 
 	# strip whitespaces from headers

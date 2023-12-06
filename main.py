@@ -44,7 +44,7 @@ for filepath in filepaths:
 	# group data by timestamp within 24hrs (1Day) and turbine_id
 	grouper = pd.PeriodIndex(filtered_df['timestamp'], freq='D')
 	summary_df = filtered_df.groupby([grouper, 'turbine_id']).agg(power_output_mean=('power_output', 'mean'),
-																 power_ouput_max=('power_output', 'max'),
+																power_ouput_max=('power_output', 'max'),
 						                                         power_output_min=('power_output', 'min')).reset_index()
 
 	# write processed dataframe into csv file
